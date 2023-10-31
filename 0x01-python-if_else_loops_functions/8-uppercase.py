@@ -1,6 +1,6 @@
-#!/usr/bin/python3
-def islower(c):
-    if 65 <= ord(c) <= 90:
-        return (True)
-    else:
-        return (False)
+def isuppercase(str):
+    for c in str:
+        if 97 <= ord(c) <= 122:
+            print("{}".format(chr(ord(c) - 32)), end="")
+        else:
+            print("{}".format(c), end="")
