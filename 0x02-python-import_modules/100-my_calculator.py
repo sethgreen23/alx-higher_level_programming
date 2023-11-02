@@ -5,18 +5,18 @@ if __name__ == '__main__':
 
     argv_len = len(sys.argv) - 1
     if not argv_len == 3:
-        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>", end='\n')
         exit(1)
     argv_elem = sys.argv[1:]
     operators = "+-/*"
-    a = int(argv_elem[0])
     operator = argv_elem[1]
-    b = int(argv_elem[2])
-    if not operator in operators:
-        print("Unknown operator. Available operators: +, -, * and /")
+    if operator not in operators:
+        print("Unknown operator. Available operators: +, -, * and /", end='\n')
         exit(1)
+    a = int(argv_elem[0])
+    b = int(argv_elem[2])
     ops = [add, sub, mul, div]
-    ch = ''
+    ch = 0
     if operator == '+':
         ch = 0
     if operator == '-':
@@ -26,4 +26,4 @@ if __name__ == '__main__':
     if operator == '/':
         ch = 3
     f_str = "{0:d} {1} {2:d} = {3:d}".format(a, operator, b, ops[ch](a, b))
-    print(f_str)
+    print(f_str, end='\n')
