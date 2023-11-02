@@ -13,6 +13,6 @@ if __name__ == '__main__':
     print(argv_print)
     if argv_length > 0:
         values = sys.argv[1:]
-        for index, value in enumerate(values):
-            value_p = "{0:d}: {1}".format(index + 1, value)
+        for index, value in enumerate(values, start=1):
+            value_p = "{0:d}: {1}".format(index , value)
             print(value_p)
