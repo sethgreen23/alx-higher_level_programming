@@ -14,5 +14,5 @@ if __name__ == '__main__':
     if argv_length > 0:
         values = sys.argv[1:]
         for index, value in enumerate(values, start=1):
-            value_p = "{0:d}: {1}".format(index , value)
+            value_p = "{0:d}: {1}".format(index, value)
             print(value_p)
