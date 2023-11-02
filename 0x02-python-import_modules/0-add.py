@@ -7,4 +7,4 @@ if __name__ == '__main__':
     b = 2
     result = add(a, b)
 
-    print("{a:d} + {b:d} = {result:d}".format(a = a, b = b, result = result))
+    print("{0:d} + {1:d} = {2:d}".format(a, b, result))
