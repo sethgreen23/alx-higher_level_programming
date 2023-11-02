@@ -6,4 +6,4 @@ a = 1
 b = 2
 c = add(a, b)
 
-print(f"{a:d} + {b:d} = {c:d}\n")
+print(f"{a:d} + {b:d} = {c:d}")
