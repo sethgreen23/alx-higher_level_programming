@@ -1,12 +1,8 @@
 #!/usr/bin/python3
-def add_tuple(tuple_a=(), tuple_b=()):
-    tup = []
-    for i in range(0, 2):
-        value_a = 0
-        if i < len(tuple_a):
-            value_a = tuple_a[i]
-        value_b = 0
-        if i < len(tuple_b):
-            value_b = tuple_b[i]
-        tup.append(value_a + value_b)
-    return (tuple(tup))
+def print_matrix_integer(matrix=[[]]):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    for row in range(rows):
+        for col in range(cols):
+            end_str = '\n' if col == cols - 1 else ' '
+            print("{:d}".format(matrix[row][col]), end=end_str)
