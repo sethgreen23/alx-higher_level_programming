@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-import builtins
-builtins.print("#pythoniscool")
+import os
+os.system("echo '#pythoniscool'")
