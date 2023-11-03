@@ -1,3 +1,2 @@
-#!/usr/bin/python3
-"""#pythoniscool
-"""
+#!/usr/bin/bash
+echo '#pythoniscool'
