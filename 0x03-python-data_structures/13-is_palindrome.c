@@ -9,7 +9,7 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int length = 0, i = 0, j = 0, flag = 0, *tab = NULL;
+	int length = 0, i = 0, sum = 0, stop = 0;
 	listint_t *pointer = *head;
 
 	if (head == NULL)
@@ -19,25 +19,22 @@ int is_palindrome(listint_t **head)
 		length++;
 		pointer = pointer->next;
 	}
-	tab = malloc(sizeof(int) * (length + 1));
-	if (tab == NULL)
-		return (0);
+	stop = length / 2, i = 0, sum = 0;
 	pointer = *head;
 	while (pointer != NULL)
 	{
-		tab[i++] = pointer->n;
-		pointer = pointer->next;
-	}
-	flag = 1;
-	i = 0, j = length - 1;
-	for (; i < j; i++, j--)
-	{
-		if (tab[i] != tab[j])
+		if (i == stop && (length % 2 == 1))
 		{
-			flag = 0;
-			break;
+			pointer = pointer->next;
+			i++;
+			continue;
 		}
+		if (i < stop)
+			sum += pointer->n;
+		else
+			sum -= pointer->n;
+		pointer = pointer->next;
+		i++;
 	}
-	free(tab);
-	return (flag);
+	return (sum == 0 ? 1 : 0);
 }
