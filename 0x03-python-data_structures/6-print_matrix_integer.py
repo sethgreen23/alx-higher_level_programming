@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def print_matrix_integer(matrix=[[]]):
-    if matrix:
+    if not (not matrix or all(not row for row in matrix)):
         rows = len(matrix)
         for row in range(rows):
             list_row = matrix[row]
