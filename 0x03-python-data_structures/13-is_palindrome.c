@@ -9,32 +9,37 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int length = 0, i = 0, sum = 0, stop = 0;
-	listint_t *pointer = *head;
+	listint_t *slow = *head, *fast = *head;
+	listint_t *next = NULL, *prev = NULL;
+	listint_t *left = NULL, *right = NULL;
 
-	if (head == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
-	while (pointer != NULL)
+	/*Find the middle*/
+	while (fast != NULL && fast->next != NULL)
 	{
-		length++;
-		pointer = pointer->next;
+		fast = fast->next->next;
+		prev = slow;
+		slow = slow->next;
 	}
-	stop = length / 2, i = 0, sum = 0;
-	pointer = *head;
-	while (pointer != NULL)
+	/*Reverse the second part of the list*/
+	prev->next = NULL;
+	while (slow != NULL)
 	{
-		if (i == stop && (length % 2 == 1))
-		{
-			pointer = pointer->next;
-			i++;
-			continue;
-		}
-		if (i < stop)
-			sum += pointer->n;
-		else
-			sum -= pointer->n;
-		pointer = pointer->next;
-		i++;
+		next = slow->next;
+		slow->next = prev;
+		prev = slow;
+		slow = next;
 	}
-	return (sum == 0 ? 1 : 0);
+	/*Find palindrome*/
+	left = *head;
+	right = prev;
+	while (left != NULL && right != NULL)
+	{
+		if (left->n != right->n)
+			return (0);
+		left = left->next;
+		right = right->next;
+	}
+	return (1);
 }
