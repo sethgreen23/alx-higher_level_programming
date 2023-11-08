@@ -11,18 +11,18 @@ def roman_to_int(roman_string):
                 'M': 1000
                 }
     result = 0
-    for index, value in enumerate(roman_string):
-        if (value == 'V') and (roman_string[index - 1] == 'I'):
+    for idx, value in enumerate(roman_string):
+        if (value == 'V') and (roman_string[idx - 1] == 'I') and idx - 1 > 0:
             result += rom_dict['V'] - (2 * rom_dict['I'])
-        elif (value == 'X') and (roman_string[index - 1] == 'I'):
+        elif (value == 'X') and (roman_string[idx - 1] == 'I') and idx - 1 > 0:
             result += rom_dict['X'] - (2 * rom_dict['I'])
-        elif (value == 'L') and (roman_string[index - 1] == 'X'):
+        elif (value == 'L') and (roman_string[idx - 1] == 'X') and idx - 1 > 0:
             result += rom_dict['L'] - (2 * rom_dict['X'])
-        elif (value == 'C') and (roman_string[index - 1] == 'X'):
+        elif (value == 'C') and (roman_string[idx - 1] == 'X') and idx - 1 > 0:
             result += rom_dict['C'] - (2 * rom_dict['X'])
-        elif (value == 'D') and (roman_string[index - 1] == 'C'):
+        elif (value == 'D') and (roman_string[idx - 1] == 'C') and idx - 1 > 0:
             result += rom_dict['D'] - (2 * rom_dict['C'])
-        elif (value == 'M') and (roman_string[index - 1] == 'C'):
+        elif (value == 'M') and (roman_string[idx - 1] == 'C') and idx - 1 > 0:
             result += rom_dict['M'] - (2 * rom_dict['C'])
         else:
             result += rom_dict[value]
