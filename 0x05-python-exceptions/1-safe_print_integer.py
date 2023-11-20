@@ -5,8 +5,6 @@ def safe_print_integer(value):
             raise Exception("{value} is not and integer".format(value))
         print("{:d}".format())
     except Exception:
-        print("")
         return (False)
     else:
-        print("")
         return (True)
