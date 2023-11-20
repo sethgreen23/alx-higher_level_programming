@@ -5,7 +5,7 @@ def list_division(my_list_1, my_list_2, list_length):
     for i in range(list_length):
         try:
             if not (isinstance(my_list_1[i], (int, float)) and
-                    isinstance(my_list_2[i], (int, float))):
+					isinstance(my_list_2[i], (int, float))):
                 raise TypeError("wrong type")
             if my_list_2[i] == 0:
                 result = 0
@@ -20,4 +20,4 @@ def list_division(my_list_1, my_list_2, list_length):
             print("out of range")
         finally:
             res_list.append(result)
-        return res_list
+    return res_list
