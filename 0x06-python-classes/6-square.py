@@ -18,14 +18,8 @@ class Square:
             size (float): The size of the square.
             position (float, float): The square position.
         """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
-        if not Square.is_positive_tuple(position):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     @staticmethod
     def is_positive_tuple(value):
