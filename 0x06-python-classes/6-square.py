@@ -8,6 +8,7 @@ class Square:
 
     Attributes:
         size (float): The size of the square.
+        position (tuple): The position of square
     """
     def __init__(self, size=0, position=(0, 0)):
         """
@@ -47,7 +48,12 @@ class Square:
 
     @property
     def size(self):
-        """Provide the size of the square"""
+        """
+        Provide the size of the square
+
+        Return:
+            int: size of the square
+        """
         return self.__size
 
     @size.setter
@@ -61,11 +67,17 @@ class Square:
 
     @property
     def position(self):
-        """Provide the position of the square"""
+        """
+        Provide the position of the square
+
+        Return:
+            tuple: position of the square
+        """
         return self.__position
 
     @position.setter
     def position(self, value):
+        """set the position of the square"""
         if not Square.is_positive_tuple(value):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
