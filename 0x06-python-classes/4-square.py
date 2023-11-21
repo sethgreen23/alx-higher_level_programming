@@ -35,3 +35,10 @@ class Square:
     def size(self):
         """Return the value of the instance size"""
         return self.__size
+
+    @size.setter
+    def size(self, value):
+        """Set a value the the instance variable size"""
+        if not isinstance(value, int):
+            raise ValueError("size must be an integer")
+        self.__size = value
