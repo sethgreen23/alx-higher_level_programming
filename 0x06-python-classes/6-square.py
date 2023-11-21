@@ -17,8 +17,8 @@ class Square:
             size (float): The size of the square.
             position (float, float): The square position.
         """
-        self.size(size)
-        self.position(position)
+        self.__size = size
+        self.__position = position
 
     @staticmethod
     def is_positive_tuple(value):
