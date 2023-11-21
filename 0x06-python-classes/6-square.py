@@ -55,6 +55,8 @@ class Square:
         """set the size of the square"""
         if not isinstance(value, int):
             raise ValueError("size must be an integer")
+        if value < 0:
+            raise ValueError("position must be a tuple of 2 positive integers")
         self.__size = value
 
     @property
