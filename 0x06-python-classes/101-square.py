@@ -93,8 +93,9 @@ class Square:
         """Print the square"""
         if self.size != 0:
             [print("") for _ in range(0, self.position[1])]
-        for _ in range(0, self.size):
+        for i in range(0, self.size):
             [print(" ", end="") for _ in range(0, self.position[0])]
             [print("#", end="") for _ in range(0, self.size)]
-            print("")
+            if i != self.size - 1:
+                print("")
         return ("")
