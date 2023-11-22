@@ -96,8 +96,8 @@ class SinglyLinkedList:
     def __str__(self):
         """Redefinition of str function"""
         temp = self.__head
-        str_ret = ""
+        str_list = []
         while temp is not None:
-            str_ret += str(temp.data)+"\n"
+            ret_list.append(temp.data)
             temp = temp.next_node
-        return str_ret[:-1]
+        return "\n".join([str(x) for x in ret_list])
