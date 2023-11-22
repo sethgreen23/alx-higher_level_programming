@@ -93,7 +93,7 @@ class SinglyLinkedList:
                 new_node.next_node = temp
                 prev.next_node = new_node
 
-    def __repr__(self):
+    def __str__(self):
         """Redefinition of str function"""
         temp = self.__head
         str_ret = ""
