@@ -86,7 +86,8 @@ class SinglyLinkedList:
                     new_node.next_node = self.__head
                     self.__head = new_node
                 else:
-                    self.__head.next_node = new_node
+                    new_node.next_node = temp
+                    self.__head = new_node
             elif temp is None:
                 prev.next_node = new_node
             else:
