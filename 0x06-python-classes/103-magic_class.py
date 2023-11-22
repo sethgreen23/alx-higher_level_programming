@@ -13,7 +13,7 @@ class MagicClass:
         radius (float): The radius of the circle
     """
 
-    def __init__(self, radius):
+    def __init__(self, radius=0):
         """
         Initilizes a Cicle object.
 
