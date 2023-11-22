@@ -2,9 +2,6 @@
 """Module MagicClass"""
 
 
-import math
-
-
 class MagicClass:
     """
     A class representing a magic
