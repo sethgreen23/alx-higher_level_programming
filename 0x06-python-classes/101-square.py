@@ -95,10 +95,11 @@ class Square:
         if self.size == 0:
             return "\n"
 
-        for i in range(self.position[1]):
+        for _ in range(self.position[1]):
             st.append("\n")
         for _ in range(self.size):
-            st.append(" "*self.position[0])
+            for _ in range(self.position[0]):
+                st.append(" ")
             for _ in range(self.size):
                 st.append("#")
             st.append("\n")
