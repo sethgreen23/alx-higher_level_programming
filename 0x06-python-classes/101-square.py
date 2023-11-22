@@ -89,7 +89,7 @@ class Square:
                 print("#", end="")
             print()
 
-    def __repr__(self):
+    def __str__(self):
         """Print the square"""
         st = []
         if self.size == 0:
