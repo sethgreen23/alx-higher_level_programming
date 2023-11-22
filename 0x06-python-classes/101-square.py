@@ -88,3 +88,18 @@ class Square:
             for _ in range(self.size):
                 print("#", end="")
             print()
+
+    def __str__(self):
+        """Print the square"""
+        st = []
+        if self.size == 0:
+            return "\n"
+
+        for i in range(self.position[1]):
+            st.append("\n")
+        for _ in range(self.size):
+            st.append(" "*self.position[0])
+            for _ in range(self.size):
+                st.append("#")
+            st.append("\n")
+        return ("".join(st))
