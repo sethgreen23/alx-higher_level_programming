@@ -95,8 +95,6 @@ class SinglyLinkedList:
 
     def __str__(self):
         """Redefinition of str function"""
-        if self.__head is None:
-            return ""
         temp = self.__head
         str_ret = ""
         while temp is not None:
