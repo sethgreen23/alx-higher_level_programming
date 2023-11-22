@@ -100,4 +100,4 @@ class SinglyLinkedList:
         while temp is not None:
             str_ret += str(temp.data) + "\n"
             temp = temp.next_node
-        return str_ret[:-1]
+        return str_ret
