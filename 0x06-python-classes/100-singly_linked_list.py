@@ -82,12 +82,12 @@ class SinglyLinkedList:
                 prev = temp
                 temp = temp.next_node
             if prev is None:
-                if self.__head.data > value:
-                    new_node.next_node = self.__head
-                    self.__head = new_node
-                else:
+                if temp.data > value:
                     new_node.next_node = temp
                     self.__head = new_node
+                else:
+                    new_node.next_node = temp.next_node
+                    temp.next_node = new_node
             elif temp is None:
                 prev.next_node = new_node
             else:
