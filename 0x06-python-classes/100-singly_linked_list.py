@@ -100,4 +100,4 @@ class SinglyLinkedList:
         while temp is not None:
             ret_list.append(temp.data)
             temp = temp.next_node
-        return "\n".join([str(x) for x in ret_list])
+        return '\n'.join([str(x) for x in ret_list])
