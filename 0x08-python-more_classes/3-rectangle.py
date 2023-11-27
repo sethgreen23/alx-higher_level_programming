@@ -83,5 +83,5 @@ class Rectangle:
         string = ""
 
         if self.height != 0 and self.width != 0:
-            string = ("#" * self.width + '\n') * self.height
+            string += ("#" * self.width + '\n') * self.height
         return string
