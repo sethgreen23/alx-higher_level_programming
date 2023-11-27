@@ -81,4 +81,6 @@ class Rectangle:
         """string representation of the string"""
         if self.height != 0 and self.width != 0:
             print(("#" * self.width + '\n') * self.height, end="")
+        else:
+            print("")
         return ""
