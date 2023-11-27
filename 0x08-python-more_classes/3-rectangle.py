@@ -79,9 +79,9 @@ class Rectangle:
 
     def __str__(self):
         """string representation of the string"""
-        
+
         string = ""
 
         if self.height != 0 and self.width != 0:
-            string = ("#" * self.width + '\n') * self.height
+            string += ("#" * self.width + '\n') * self.height
         return string
