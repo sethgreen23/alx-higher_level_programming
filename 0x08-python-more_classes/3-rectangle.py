@@ -80,6 +80,5 @@ class Rectangle:
     def __str__(self):
         """string representation of the string"""
 
-        if self.area() > 0:
-            print(("#" * self.width + '\n') * self.height, end="")
+        print(("#" * self.width + '\n') * self.height, end="")
         return ""
