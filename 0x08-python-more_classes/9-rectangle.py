@@ -107,17 +107,6 @@ class Rectangle:
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
-        """
-        Determine the biggest from two rectangles
-
-        Parameters:
-            rect_1 (Rectangle): rectangle one
-            rect_2 (Rectangle): rectangle two
-
-        Return:
-            Rectangle: return the biggest one, if equal return rect_1
-        """
-
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
