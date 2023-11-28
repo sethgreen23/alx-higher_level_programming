@@ -1,3 +1,3 @@
 #!/usr/bin/python3
 def magic_string():
-    return ", ".join((i + 1) * ["BestSchool"]) if i > 0 else ""
+    return ", ".join("BestSchool" for _ in range(i + 1))
