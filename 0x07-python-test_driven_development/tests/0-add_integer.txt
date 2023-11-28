@@ -1,0 +1,154 @@
+============================
+ Doctest for 0-add_integer
+============================
+
+
+Test if the module has docstring
+================================
+
+
+::
+	>>> m = __import__("0-add_integer").__doc__
+	>>> len(m) > 0
+	True
+
+Test if the function add_integer has docstring
+==============================================
+
+
+::
+
+	>>> f = __import__("0-add_integer").add_integer.__doc__
+	>>> len(f) > 0
+	True
+
+
+Interger with Integer
+=====================
+
+::
+	>>> add_integer = __import__("0-add_integer").add_integer
+	>>> add_integer(1, 2)
+	3
+	>>> add_integer(-1, -1)
+	-2
+	>>> add_integer(0, 0)
+	0
+	>>> add_integer(0, 1)
+	1
+	>>> add_integer(-1)
+	97
+	>>>
+
+
+Float with Float
+================
+
+
+::
+	>>> add_integer(1.0, 2.0)
+	3
+	>>> add_integer(1.5, 3.2)
+	4
+	>>> add_integer(-4.0, -5.5)
+	-9
+	>>> add_integer(0.0, 0.0)
+	0
+	>>> add_integer(8.3, 2.3) # doctest: +ELLIPSIS
+	10
+	>>> add_integer(0.0, 1.2)
+	1
+	>>> add_integer(-1)
+	97
+	>>>
+
+
+
+Non-Float/Integer with Float/Integer
+====================================
+
+
+::
+	>>> add_integer([1, 2, 3], 3.5)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+
+	>>> add_integer({"brand": "Ford"}, 3)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+
+	>>> add_integer("4", 5.5)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+
+	>>> add_integer("hello", -2)
+	Traceback (most recent call last):
+		... 
+	TypeError: a must be an integer
+
+
+	>>> add_integer(None, None)
+	Traceback (most recent call last):
+		... 
+	TypeError: a must be an integer
+
+
+ Float/Integer with Non-Float/Integer
+=====================================
+
+
+::
+	>>> add_integer(-6, [1, 2, 3])
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+	>>> add_integer(3, {"brand": "Ford"})
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+	>>> add_integer(5.5, "4")
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+
+	>>> add_integer(0, "hello")
+	Traceback (most recent call last):
+		... 
+	TypeError: b must be an integer
+
+
+	>>> add_integer(0, None)
+	Traceback (most recent call last):
+		... 
+	TypeError: b must be an integer
+
+Non-Float-Integer-Numerical with Non-Float-Integer-Numerical 
+============================================================
+
+
+::
+	>>> add_integer(99999999999999999999999999999999999, 1)
+	100000000000000000000000000000000000
+	>>> add_integer(5j, -3)
+	Traceback (most recent call last):
+		... 
+	TypeError: a must be an integer
+	>>> add_integer(5j)
+	Traceback (most recent call last):
+		... 
+	TypeError: a must be an integer
+	>>> add_integer(-3, 4j)
+	Traceback (most recent call last):
+		... 
+	TypeError: b must be an integer
+	
+	>>> add_integer(-545666666666666655555555559999999999, -58444444444444444444444444)
+	-545666666725111100000000004444444443
+	>>>

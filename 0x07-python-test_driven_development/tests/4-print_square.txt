@@ -1,0 +1,145 @@
+=================================
+ Doctest for 4-print_square.py
+=================================
+
+
+Test if the module has docstring
+================================
+
+
+::
+	>>> m = __import__("4-print_square").__doc__
+	>>> len(m) > 0
+	True
+
+
+Test if the functionshas docstring
+=================================================
+
+
+::
+	>>> f = __import__("4-print_square").print_square.__doc__
+	>>> len(f) > 0
+	True
+
+Test for real values
+====================
+
+
+::
+	>>> print_square = __import__("4-print_square").print_square
+	>>> print_square(3)
+	###
+	###
+	###
+
+
+::
+	>>> print_square(0)
+
+
+::
+	>>> print_square(1)
+	#
+
+
+::
+	>>> print_square((1))
+	#
+
+
+::
+	>>> print_square((2))
+	##
+	##
+
+Test for Non integer values:
+======================
+
+
+::
+	>>> print_square(2.5)
+	Traceback (most recent call last):
+		... 
+	TypeError: size must be an integer
+
+
+::
+	>>> print_square("string")
+	Traceback (most recent call last):
+		... 
+	TypeError: size must be an integer
+
+
+::
+	>>> print_square([1, 2, 3])
+	Traceback (most recent call last):
+		... 
+	TypeError: size must be an integer
+
+
+::
+	>>> print_square({1:"max"})
+	Traceback (most recent call last):
+		... 
+	TypeError: size must be an integer
+
+
+::
+	>>> print_square({})
+	Traceback (most recent call last):
+		... 
+	TypeError: size must be an integer
+
+
+::
+	>>> print_square([])
+	Traceback (most recent call last):
+		... 
+	TypeError: size must be an integer
+
+
+::
+	>>> print_square(None)
+	Traceback (most recent call last):
+		... 
+	TypeError: size must be an integer
+
+
+::
+	>>> print_square(())
+	Traceback (most recent call last):
+		... 
+	TypeError: size must be an integer
+
+
+
+::
+	>>> print_square((1, 2, 3))
+	Traceback (most recent call last):
+		... 
+	TypeError: size must be an integer
+
+
+::
+	>>> print_square(-2.5)
+	Traceback (most recent call last):
+		... 
+	TypeError: size must be an integer
+
+Test for negative numbers:
+==========================
+
+
+::
+	>>> print_square(-1)
+	Traceback (most recent call last):
+		... 
+	ValueError: size must be >= 0
+
+
+::
+	>>> print_square(-1555555555)
+	Traceback (most recent call last):
+		... 
+	ValueError: size must be >= 0
