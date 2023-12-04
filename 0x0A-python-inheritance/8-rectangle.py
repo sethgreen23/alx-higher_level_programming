@@ -39,9 +39,6 @@ class Rectangle(BaseGeometry):
         height (integer): height
     """
 
-    __width = None
-    __height = None
-
     def __init__(self, width, height):
         """
         Init function for Rectangle Class
