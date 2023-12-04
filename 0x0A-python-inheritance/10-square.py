@@ -7,10 +7,10 @@ Rectangle = __import__("9-rectangle").Rectangle
 
 class Square(Rectangle):
     """
-    Class Rectangle
+    Class Square
     """
 
-    def init(self, size):
+    def __init__(self, size):
         """
         Initialise Square Object
 
@@ -18,7 +18,8 @@ class Square(Rectangle):
             size (int): size of a square
         """
 
-        integer_validator(size)
+        super().__init__(size, size)
+        self.integer_validator("size", size)
         self.__size = size
 
     def area(self):
