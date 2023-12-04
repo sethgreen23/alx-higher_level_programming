@@ -25,9 +25,9 @@ class BaseGeometry:
         """
 
         if type(value) is not int:
-            raise TypeError(f"{name:s} must be an integer")
+            raise TypeError("{:s} must be an integer".format(name)
         if value <= 0:
-            raise ValueError(f"{name:s} must be greater than 0")
+            raise ValueError("{:s} must be greater than 0".format(name)
 
 
 class Rectangle(BaseGeometry):
