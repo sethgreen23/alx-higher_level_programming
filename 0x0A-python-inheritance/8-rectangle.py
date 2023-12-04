@@ -50,6 +50,6 @@ class Rectangle(BaseGeometry):
         Return: Nothing
         """
         self.integer_validator("width", width)
-        self.integer_validator("height", height)
         self.__width = width
+        self.integer_validator("height", height)
         self.__height = height
