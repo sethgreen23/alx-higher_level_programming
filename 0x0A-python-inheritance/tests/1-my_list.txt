@@ -1,0 +1,134 @@
+===========================
+ Doctest for 1-my_list
+==========================
+
+Test if the module has docstring
+================================
+
+
+::
+	>>> m = __import__("1-my_list").__doc__
+	>>> len(m) > 0
+	True
+
+Test if the Class MyList has docstring
+==============================================
+
+
+::
+
+	>>> c = __import__("1-my_list").MyList.__doc__
+	>>> len(c) > 0
+	True
+
+Import the function to test
+===========================
+
+
+::
+
+	>>> f = __import__("1-my_list").MyList.print_sorted.__doc__
+	>>> len(f) > 0
+	True
+
+Import the function print_sorted:
+=================================
+
+
+::
+
+	>>> MyList = __import__("1-my_list").MyList
+
+
+Test with integer Values:
+=========================
+
+
+::
+	>>> my_list = MyList()
+	>>> my_list.append(1)
+	>>> my_list.append(4)
+	>>> my_list.append(2)
+	>>> my_list.append(3)
+	>>> my_list.append(5)
+	>>> print(my_list)
+	[1, 4, 2, 3, 5]
+	>>> my_list.print_sorted()
+	[1, 2, 3, 4, 5]
+	>>> print(my_list)
+	[1, 4, 2, 3, 5]
+
+
+::
+        >>> my_list = MyList()
+        >>> my_list.append(1)
+        >>> my_list.append(-5)
+        >>> my_list.append(2000)
+        >>> my_list.append(-100)
+        >>> my_list.append(15)
+        >>> print(my_list)
+        [1, -5, 2000, -100, 15]
+        >>> my_list.print_sorted()
+        [-100, -5, 1, 15, 2000]
+        >>> print(my_list)
+        [1, -5, 2000, -100, 15]
+
+
+::
+        >>> my_list = MyList()
+        >>> print(my_list)
+        []
+        >>> my_list.print_sorted()
+        []
+        >>> print(my_list)
+        []
+
+
+
+::
+        >>> my_list = MyList()
+        >>> my_list.append(-1)
+        >>> my_list.append(-5)
+        >>> my_list.append(-2000)
+        >>> my_list.append(-100)
+        >>> my_list.append(-15)
+        >>> print(my_list)
+        [-1, -5, -2000, -100, -15]
+        >>> my_list.print_sorted()
+        [-2000, -100, -15, -5, -1]
+        >>> print(my_list)
+        [-1, -5, -2000, -100, -15]
+
+
+::
+        >>> my_list = MyList()
+        >>> my_list.append(0)
+        >>> print(my_list)
+        [0]
+        >>> my_list.print_sorted()
+        [0]
+        >>> print(my_list)
+        [0]
+
+
+::
+        >>> my_list = MyList()
+        >>> my_list.append(1)
+        >>> print(my_list)
+        [1]
+        >>> my_list.print_sorted()
+        [1]
+        >>> print(my_list)
+        [1]
+
+
+::
+        >>> my_list = MyList()
+        >>> my_list.append(-1)
+        >>> print(my_list)
+        [-1]
+        >>> my_list.print_sorted()
+        [-1]
+        >>> print(my_list)
+        [-1]
+
