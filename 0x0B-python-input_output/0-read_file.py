@@ -12,7 +12,7 @@ def read_file(filename=""):
     Return: Nothing
     """
 
-    with open(filename, mode="w", encoding="utf-8") as f:
+    with open(filename, mode="r", encoding="utf-8") as f:
         while True:
             line = f.readline()
             if not line:
