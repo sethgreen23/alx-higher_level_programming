@@ -31,8 +31,8 @@ class Student:
 
         if attrs is None:
             return self.__dict__
-        contain_str = any(type(element) == str for element in attrs)
-        if not contain_str:
+        all_str = all(isinstance(element, str) for element in attrs)
+        if not all_str:
             return self.__dict__
         dictionary = {}
         for key in attrs:
