@@ -13,5 +13,8 @@ def read_file(filename=""):
     """
 
     with open(filename, mode="w", encoding="utf-8") as f:
-        line = f.readline()
-        print(line, end="")
+        while True:
+            line = f.readline()
+            if not line:
+                break
+            print(line, end="")
