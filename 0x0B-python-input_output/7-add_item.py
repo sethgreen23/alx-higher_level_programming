@@ -13,6 +13,6 @@ if len(sys.argv) > 1:
     list_json = load_from_json_file("add_item.json")
     for element in arguments:
         list_json.append(element)
-    save_to_json_file(list_json, "add_item_json")
+    save_to_json_file(list_json, "add_item.json")
 else:
     save_to_json_file(list_json, "add_item.json")
