@@ -44,4 +44,5 @@ class Student:
         """reload object from json"""
         if json is not None:
             for key, value in self.__dict__.items():
-                self.__dict__[key] = json[key]
+                if key in self.__dict__:
+                    self.__dict__[key] = json[key]
