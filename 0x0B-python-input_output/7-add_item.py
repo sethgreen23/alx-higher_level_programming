@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Add item Python"""
+"""
+Add item Python
+"""
 
 
 from sys import argv
