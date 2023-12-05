@@ -42,4 +42,5 @@ class Student:
 
     def reload_from_json(self, json):
         """reload object from json"""
-        self.__dict__ = json
+        if json is not None:
+            self.__dict__ = json
