@@ -13,7 +13,7 @@ def write_file(filename="", text=""):
     Return: Nothing
     """
 
-    char_numbers = 0 
+    char_numbers = 0
     with open(filename, mode="w", encoding="utf-8") as f:
         char_numbers = f.write(text)
     return char_numbers
