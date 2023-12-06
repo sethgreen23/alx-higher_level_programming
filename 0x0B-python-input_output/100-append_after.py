@@ -8,6 +8,8 @@ def append_after(filename="", search_string="", new_string=""):
     lines_count = []
     with open(filename, "r", encoding="utf-8") as f:
         lst = list(f)
+    if not lst:
+        return
     new_list = []
     for line in lst:
         new_list.append(line)
