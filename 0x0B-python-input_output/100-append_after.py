@@ -19,5 +19,4 @@ def append_after(filename="", search_string="", new_string=""):
                 new_list.append(new_string)
                 break
     with open(filename, "w", encoding="utf-8") as f:
-        for line in new_list:
-            f.write(line)
+        f.writelines(new_list)
