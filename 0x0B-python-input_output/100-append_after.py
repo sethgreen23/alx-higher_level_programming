@@ -5,7 +5,7 @@
 def append_after(filename="", search_string="", new_string=""):
     """Append After"""
 
-    if not search_string or not new_string:
+    if not search_string or not new_string or not filename:
         return
     lines_count = []
     with open(filename, "r", encoding="utf-8") as f:
