@@ -226,6 +226,63 @@ class TestRectangleValidValues(unittest.TestCase):
         actual_output = captured_output.getvalue()
         self.assertEqual(actual_output, expected_output)
 
+    def test_update(self):
+        """Test update function"""
+        r = Rectangle(10, 10, 10, 10)
+        expected_output = "[Rectangle] (1) 10/10 - 10/10"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        r.update()
+        print(r, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Rectangle] (89) 10/10 - 10/10"
+        sys.stdout = captured_output
+        r.update(89)
+        print(r, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Rectangle] (89) 10/10 - 2/10"
+        sys.stdout = captured_output
+        r.update(89, 2)
+        print(r, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Rectangle] (89) 10/10 - 2/3"
+        sys.stdout = captured_output
+        r.update(89, 2, 3)
+        print(r, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Rectangle] (89) 4/10 - 2/3"
+        sys.stdout = captured_output
+        r.update(89, 2, 3, 4)
+        print(r, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Rectangle] (89) 4/5 - 2/3"
+        sys.stdout = captured_output
+        r.update(89, 2, 3, 4, 5)
+        print(r, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+
 
 if __name__ == '__main__':
     unittest.main()

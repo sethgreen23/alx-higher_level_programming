@@ -96,3 +96,17 @@ class Rectangle(Base):
                                                                  self.y,
                                                                  self.width,
                                                                  self.height)
+
+    def update(self, *args):
+        """Apdate the instance of the object"""
+        for i, value in enumerate(args):
+            if i == 0:
+                self.id = value
+            if i == 1:
+                self.width = value
+            if i == 2:
+                self.height = value
+            if i == 3:
+                self.x = value
+            if i == 4:
+                self.y = value
