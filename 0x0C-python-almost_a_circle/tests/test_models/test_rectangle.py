@@ -5,6 +5,8 @@ In this module we will test all the available Functionalities
 and Comme up with adequate testes
 """
 import unittest
+import sys
+from io import StringIO
 from models.rectangle import Rectangle
 
 
@@ -177,6 +179,52 @@ class TestRectangleValidValues(unittest.TestCase):
         self.assertEqual(r1.area(), 20)
         r1 = Rectangle(8, 7, 0, 0, 12)
         self.assertEqual(r1.area(), 56)
+
+    def test_diplay_without_x_y(self):
+        """Display the rectangle without offset"""
+        expected_output = "####\n" \
+                          "####\n" \
+                          "####\n" \
+                          "####\n" \
+                          "####\n" \
+                          "####\n"
+        capture_output = StringIO()
+        sys.stdout = capture_output
+        r1 = Rectangle(4, 6)
+        r1.display()
+        sys.stdout = sys.__stdout__
+        actual_output = capture_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        capture_output.seek(0)
+        capture_output.truncate(0)
+        expected_output = "##\n" \
+                          "##\n"
+        sys.stdout = capture_output
+        r1 = Rectangle(2, 2)
+        r1.display()
+        sys.stdout = sys.__stdout__
+        actual_output = capture_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+
+    def test_str(self):
+        """Test str print"""
+        r = Rectangle(1, 2, 3, 4)
+        expected_output = "[Rectangle] (1) 3/4 - 1/2"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        print(r, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        r = Rectangle(1, 2, 0, 0, 12)
+        expected_output = "[Rectangle] (12) 0/0 - 1/2"
+        sys.stdout = captured_output
+        print(r, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
 
 
 if __name__ == '__main__':
