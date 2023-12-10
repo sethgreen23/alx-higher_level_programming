@@ -88,6 +88,30 @@ class TestSqureClass(unittest.TestCase):
         actual_output = captured_output.getvalue()
         self.assertEqual(actual_output, expected_output)
 
+    def test_size_value(self):
+        """Test for the size value of the square"""
+        s = Square(5)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        expected_output = "[Square] (1) 0/0 - 5"
+        print(s, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        self.assertEqual(s.size, 5)
+        s.size = 10
+        self.assertEqual(s.size, 10)
+        with self.assertRaises(TypeError):
+            s.size = "9"
+        with self.assertRaises(TypeError):
+            s.size = [1, 2, 3]
+        with self.assertRaises(TypeError):
+            s.size = {"age": 23}
+        with self.assertRaises(ValueError):
+            s.size = 0
+        with self.assertRaises(ValueError):
+            s.size = -100
+
 
 if __name__ == '__main__':
     unittest.main()
