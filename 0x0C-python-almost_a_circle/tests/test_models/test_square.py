@@ -112,6 +112,81 @@ class TestSqureClass(unittest.TestCase):
         with self.assertRaises(ValueError):
             s.size = -100
 
+    def test_update(self):
+        """Test update function"""
+        s = Square(5)
+        expected_output = "[Square] (1) 0/0 - 5"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        s.update()
+        print(s, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Square] (10) 0/0 - 5"
+        sys.stdout = captured_output
+        s.update(10)
+        print(s, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Square] (1) 0/0 - 2"
+        sys.stdout = captured_output
+        s.update(1, 2)
+        print(s, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Square] (1) 3/0 - 2"
+        sys.stdout = captured_output
+        s.update(1, 2, 3)
+        print(s, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Square] (1) 3/4 - 2"
+        sys.stdout = captured_output
+        s.update(1, 2, 3, 4)
+        print(s, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Square] (1) 12/4 - 2"
+        sys.stdout = captured_output
+        s.update(x=12)
+        print(s, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Square] (1) 12/1 - 7"
+        sys.stdout = captured_output
+        s.update(size=7, y=1)
+        print(s, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "[Square] (89) 12/1 - 7"
+        sys.stdout = captured_output
+        s.update(size=7, id=89, y=1)
+        print(s, end="")
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+
 
 if __name__ == '__main__':
     unittest.main()
