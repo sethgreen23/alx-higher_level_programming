@@ -24,4 +24,5 @@ class Base:
 
     @classmethod
     def set_nb_objects(cls):
+        """Class method to set the value of nb_objest to zero"""
         Base.__nb_objects = 0

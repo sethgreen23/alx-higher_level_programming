@@ -8,7 +8,9 @@ class Rectangle(Base):
     """Rectangle class"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Init function"""
+        """
+        Init function that allow the creation of rectangle object
+        """
 
         super().__init__(id)
         self.width = width
@@ -18,12 +20,12 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """width getter"""
+        """Method to get the value of width"""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """width setter"""
+        """Method to set a value to width"""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -32,12 +34,12 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        """height getter"""
+        """Method to get the value to height"""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """height setter"""
+        """Method to set a value to height"""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value <= 0:
@@ -46,12 +48,12 @@ class Rectangle(Base):
 
     @property
     def x(self):
-        """x getter"""
+        """Method to get the value of x"""
         return self.__x
 
     @x.setter
     def x(self, value):
-        """x setter"""
+        """Method to set the value of x"""
         if not isinstance(value, int):
             raise TypeError("x must be an integer")
         if value < 0:
@@ -60,12 +62,12 @@ class Rectangle(Base):
 
     @property
     def y(self):
-        """y getter"""
+        """Method to get the value of y"""
         return self.__y
 
     @y.setter
     def y(self, value):
-        """y setter"""
+        """Method to set the value to y"""
         if not isinstance(value, int):
             raise TypeError("y must be an integer")
         if value < 0:
@@ -98,7 +100,7 @@ class Rectangle(Base):
                                                                  self.height)
 
     def update(self, *args):
-        """Apdate the instance of the object"""
+        """Update the instance of the object"""
         for i, value in enumerate(args):
             if i == 0:
                 self.id = value
