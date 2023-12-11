@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Base class Module"""
 
+import json
+
 
 class Base:
     """
@@ -26,3 +28,13 @@ class Base:
     def set_nb_objects(cls):
         """Class method to set the value of nb_objest to zero"""
         Base.__nb_objects = 0
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """
+        Static method that return string representation
+        of list_dictonaries
+        """
+        if list_dictionaries is None or not list_dictionaries:
+            return "[]"
+        return json.dumps(list_dictionaries)
