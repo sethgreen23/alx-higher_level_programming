@@ -3,6 +3,7 @@
 
 import json
 import os
+import csv
 
 
 class Base:
@@ -97,3 +98,44 @@ class Base:
                 return objs_list
         else:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """save the objects to csv file"""
+        class_name = cls.__name__
+        filename = "{:s}.csv".format(class_name)
+        list_dict = []
+        for obj in list_objs:
+            list_dict.append(obj.to_dictionary())
+        with open(filename, "w", encoding="utf-8") as csv_file:
+            if class_name == "Rectangle":
+                field_names = ["id", "width", "height", "x", "y"]
+            else:
+                field_names = ["id", "size", "x", "y"]
+            writer = csv.DictWriter(csv_file, fieldnames=field_names)
+            writer.writeheader()
+            for row in list_dict:
+                writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Load object from csv file"""
+        from models.rectangle import Rectangle
+        from models.square import Square
+
+        class_name = cls.__name__
+        filename = "{:s}.csv".format(class_name)
+        load_data = []
+        with open(filename, "r", encoding="utf-8") as csv_file:
+            reader = csv.DictReader(csv_file)
+            fieldnames = reader.fieldnames
+            for row in reader:
+                keys = ["id", "height", "width", "size", "x", "y"]
+                for key, value in row.items():
+                    if key in keys:
+                        row[key] = int(value)
+                if class_name == "Rectangle":
+                    load_data.append(Rectangle.create(**row))
+                else:
+                    load_data.append(Square.create(**row))
+            return (load_data)
