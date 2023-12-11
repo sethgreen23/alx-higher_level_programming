@@ -187,6 +187,50 @@ class TestSqureClass(unittest.TestCase):
         actual_output = captured_output.getvalue()
         self.assertEqual(actual_output, expected_output)
 
+    def test_to_dictinary(self):
+        """Test the Method to dictionary"""
+        s = Square(10, 2, 1)
+        s_dict = s.to_dictionary()
+        for key, value in s_dict.items():
+            if key == "id":
+                self.assertEqual(s.id, value)
+            elif key == "size":
+                self.assertEqual(s.size, value)
+            elif key == "x":
+                self.assertEqual(s.x, value)
+            elif key == "y":
+                self.assertEqual(s.y, value)
+        self.assertEqual(len(set(s_dict.keys())), 4)
+        self.assertTrue(isinstance(s_dict, dict))
+
+        s = Square(5, 6, 7)
+        s_dict = s.to_dictionary()
+        for key, value in s_dict.items():
+            if key == "id":
+                self.assertEqual(s.id, value)
+            elif key == "size":
+                self.assertEqual(s.size, value)
+            elif key == "x":
+                self.assertEqual(s.x, value)
+            elif key == "y":
+                self.assertEqual(s.y, value)
+        self.assertEqual(len(set(s_dict.keys())), 4)
+        self.assertTrue(isinstance(s_dict, dict))
+
+        s = Square(13, 5, 86, 12)
+        s_dict = s.to_dictionary()
+        for key, value in s_dict.items():
+            if key == "id":
+                self.assertEqual(s.id, value)
+            elif key == "size":
+                self.assertEqual(s.size, value)
+            elif key == "x":
+                self.assertEqual(s.x, value)
+            elif key == "y":
+                self.assertEqual(s.y, value)
+        self.assertEqual(len(set(s_dict.keys())), 4)
+        self.assertTrue(isinstance(s_dict, dict))
+
 
 if __name__ == '__main__':
     unittest.main()
