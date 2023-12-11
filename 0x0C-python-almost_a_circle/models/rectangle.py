@@ -99,16 +99,46 @@ class Rectangle(Base):
                                                                  self.width,
                                                                  self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Update the instance of the object"""
-        for i, value in enumerate(args):
-            if i == 0:
-                self.id = value
-            if i == 1:
-                self.width = value
-            if i == 2:
-                self.height = value
-            if i == 3:
-                self.x = value
-            if i == 4:
-                self.y = value
+        if args:
+            for i, value in enumerate(args):
+                if i == 0:
+                    self.id = value
+                if i == 1:
+                    self.width = value
+                if i == 2:
+                    self.height = value
+                if i == 3:
+                    self.x = value
+                if i == 4:
+                    self.y = value
+        else:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                elif key == "width":
+                    self.width = value
+                elif key == "height":
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
+
+    def to_dictionary(self):
+        """Return dictionary representation of a Rectangle"""
+        obj_dict = {}
+        for key, value in self.__dict__.items():
+            words = key.split("__")
+            if "id" in words:
+                obj_dict["id"] = value
+            elif "width" in words:
+                obj_dict["width"] = value
+            elif "height" in words:
+                obj_dict["height"] = value
+            elif "x" in words:
+                obj_dict["x"] = value
+            elif "y" in words:
+                obj_dict["y"] = value
+        return obj_dict

@@ -206,6 +206,32 @@ class TestRectangleValidValues(unittest.TestCase):
         actual_output = capture_output.getvalue()
         self.assertEqual(actual_output, expected_output)
 
+    def test_display_with_x_y(self):
+        """Display the rectangle with offset"""
+        expected_output = "\n" \
+                          "\n" \
+                          "  ##\n" \
+                          "  ##\n" \
+                          "  ##\n"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        r1 = Rectangle(2, 3, 2, 2)
+        r1.display()
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+        captured_output.seek(0)
+        captured_output.truncate(0)
+        expected_output = "\n" \
+                          "   ####\n" \
+                          "   ####\n"
+        sys.stdout = captured_output
+        r1 = Rectangle(4, 2, 3, 1)
+        r1.display()
+        sys.stdout = sys.__stdout__
+        actual_output = captured_output.getvalue()
+        self.assertEqual(actual_output, expected_output)
+
     def test_str(self):
         """Test str print"""
         r = Rectangle(1, 2, 3, 4)
@@ -282,6 +308,56 @@ class TestRectangleValidValues(unittest.TestCase):
         sys.stdout = sys.__stdout__
         actual_output = captured_output.getvalue()
         self.assertEqual(actual_output, expected_output)
+
+    def test_to_dictinary(self):
+        """Test the Method to dictionary"""
+        r = Rectangle(10, 2, 1, 9)
+        r_dict = r.to_dictionary()
+        for key, value in r_dict.items():
+            if key == "id":
+                self.assertEqual(r.id, value)
+            elif key == "width":
+                self.assertEqual(r.width, value)
+            elif key == "height":
+                self.assertEqual(r.height, value)
+            elif key == "x":
+                self.assertEqual(r.x, value)
+            elif key == "y":
+                self.assertEqual(r.y, value)
+        self.assertEqual(len(set(r_dict.keys())), 5)
+        self.assertTrue(isinstance(r_dict, dict))
+
+        r = Rectangle(10, 2)
+        r_dict = r.to_dictionary()
+        for key, value in r_dict.items():
+            if key == "id":
+                self.assertEqual(r.id, value)
+            elif key == "width":
+                self.assertEqual(r.width, value)
+            elif key == "height":
+                self.assertEqual(r.height, value)
+            elif key == "x":
+                self.assertEqual(r.x, value)
+            elif key == "y":
+                self.assertEqual(r.y, value)
+        self.assertEqual(len(set(r_dict.keys())), 5)
+        self.assertTrue(isinstance(r_dict, dict))
+
+        r = Rectangle(10, 2, 1, 9, 12)
+        r_dict = r.to_dictionary()
+        for key, value in r_dict.items():
+            if key == "id":
+                self.assertEqual(r.id, value)
+            elif key == "width":
+                self.assertEqual(r.width, value)
+            elif key == "height":
+                self.assertEqual(r.height, value)
+            elif key == "x":
+                self.assertEqual(r.x, value)
+            elif key == "y":
+                self.assertEqual(r.y, value)
+        self.assertEqual(len(set(r_dict.keys())), 5)
+        self.assertTrue(isinstance(r_dict, dict))
 
 
 if __name__ == '__main__':
