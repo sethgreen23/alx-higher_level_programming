@@ -52,3 +52,11 @@ class Base:
                 list_dict.append(obj.to_dictionary())
             with open(filename, mode="w", encoding="utf-8") as file:
                 file.write(Base.to_json_string(list_dict))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Return list of json string represontation json_string"""
+        if json_string is None or not json_string:
+            return []
+        else:
+            return json.loads(json_string)
