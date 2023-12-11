@@ -2,6 +2,7 @@
 """Base class Module"""
 
 import json
+import os
 
 
 class Base:
@@ -74,3 +75,25 @@ class Base:
             obj = Square(1)
         obj.update(**dictionary)
         return obj
+
+    @classmethod
+    def load_from_file(cls):
+        """Return a list of instanceses"""
+        from models.rectangle import Rectangle
+        from models.square import Square
+
+        objs_list = []
+        class_name = cls.__name__
+        filename = "{:s}.json".format(class_name)
+        if os.path.isfile(filename):
+            with open(filename, mode="r", encoding="utf-8") as file:
+                json_string = file.read()
+                list_dict_objs = Base.from_json_string(json_string)
+                for obj in list_dict_objs:
+                    if class_name == "Rectangle":
+                        objs_list.append(Rectangle.create(**obj))
+                    else:
+                        objs_list.append(Square.create(**obj))
+                return objs_list
+        else:
+            return []
