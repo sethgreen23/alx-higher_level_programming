@@ -10,17 +10,18 @@ if __name__ == "__main__":
     HT = "localhost"
     PORT = 3306
     CT = "utf8"
-    NAME = sys.argv[4]
+    STATE = sys.argv[4]
     conn = MySQLdb.connect(host=HT,
                            port=PORT,
                            user=USER,
                            passwd=PASS,
                            db=DB, charset=CT)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE states.name=%s ORDER BY id ASC",
-                (NAME,))
+    query_line = "SELECT cities.name FROM cities INNER JOIN states \
+            ON cities.state_id = states.id AND \
+            states.name=%s ORDER BY cities.id ASC;"
+    cur.execute(query_line, (STATE,))
     query_rows = cur.fetchall()
-    for row in query_rows:
-        print(row)
+    print(', '.join([city[0] for city in query_rows]))
     cur.close()
     conn.close()
