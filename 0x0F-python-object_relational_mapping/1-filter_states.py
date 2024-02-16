@@ -19,7 +19,9 @@ if __name__ == "__main__":
                            passwd=PASS,
                            db=DB, charset=CT)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE REGEXP_LIKE(states.name, '^[N]') \
+    cur.execute("SELECT * FROM states WHERE \
+            CAST(SUBSTR(states.name, 1, 1) AS BINARY) \
+            REGEXP CAST('[N]' AS BINARY) \
             ORDER BY states.id ASC")
     query_rows = cur.fetchall()
     for row in query_rows:
