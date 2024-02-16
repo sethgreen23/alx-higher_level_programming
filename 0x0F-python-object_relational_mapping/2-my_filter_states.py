@@ -23,9 +23,9 @@ if __name__ == "__main__":
     cur.execute("""
             SELECT *
             FROM states
-            WHERE states.name LIKE '{name}'
+            WHERE states.name LIKE '{:s}'
             ORDER BY states.id ASC
-            """.format(name=NAME))
+            """.format(NAME))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
