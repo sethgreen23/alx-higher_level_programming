@@ -19,7 +19,7 @@ if __name__ == "__main__":
                            passwd=PASS,
                            db=DB, charset=CT)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE states.name LIKE 'N%' \
+    cur.execute("SELECT * FROM states WHERE REGEXP_LIKE(states.name, '^[N]') \
             ORDER BY states.id ASC")
     query_rows = cur.fetchall()
     for row in query_rows:
