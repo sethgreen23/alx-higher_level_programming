@@ -22,7 +22,7 @@ if __name__ == "__main__":
     cur.execute("""
             SELECT *
             FROM states
-            WHERE states.name='{:s}'
+            WHERE CAST(states.name AS BINARY) LIKE CAST('{:s}' AS BINARY)
             ORDER BY states.id ASC
     """.format(sys.argv[4]))
     query_rows = cur.fetchall()
