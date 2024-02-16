@@ -23,7 +23,7 @@ if __name__ == "__main__":
     cur.execute("""
             SELECT *
             FROM states
-            WHERE states.name = '{name}'
+            WHERE states.name LIKE '{name}'
             ORDER BY states.id ASC
             """.format(name=NAME))
     query_rows = cur.fetchall()
