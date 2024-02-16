@@ -25,7 +25,7 @@ if __name__ == "__main__":
             FROM states
             WHERE states.name LIKE '{:s}'
             ORDER BY states.id ASC
-            """.format(NAME))
+    """.format(NAME))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
