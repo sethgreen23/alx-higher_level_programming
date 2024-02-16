@@ -20,8 +20,12 @@ if __name__ == "__main__":
                            passwd=PASS,
                            db=DB, charset=CT)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE states.name='%s' \
-            ORDER BY states.id ASC" % (NAME,))
+    cur.execute("""
+            SELECT *
+            FROM states
+            WHERE states.name = '{name}'
+            ORDER BY states.id ASC
+            """.format(name=NAME))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
