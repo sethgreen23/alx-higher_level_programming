@@ -13,7 +13,6 @@ if __name__ == "__main__":
     HT = "localhost"
     PORT = 3306
     CT = "utf8"
-    NAME = sys.argv[4]
     conn = MySQLdb.connect(host=HT,
                            port=PORT,
                            user=USER,
@@ -23,11 +22,10 @@ if __name__ == "__main__":
     cur.execute("""
             SELECT *
             FROM states
-            WHERE states.name LIKE '{:s}'
+            WHERE states.name='{:s}'
             ORDER BY states.id ASC
-    """.format(NAME))
+    """.format(sys.argv[4]))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
     cur.close()
-    conn.close()
