@@ -13,7 +13,7 @@ if __name__ == "__main__":
     HT = "localhost"
     PORT = 3306
     CT = "utf8"
-    NAME = str(sys.argv[4])
+    NAME = sys.argv[4]
     conn = MySQLdb.connect(host=HT,
                            port=PORT,
                            user=USER,
