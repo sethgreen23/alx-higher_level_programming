@@ -16,13 +16,13 @@ if __name__ == "__main__":
                            passwd=PASS,
                            db=DB, charset=CT)
     cur = conn.cursor()
-    query_line = "SELECT cities.name, states.name FROM \
+    query_line = "SELECT cities.id, cities.name, states.name FROM \
             cities INNER JOIN states ON \
-            cities.state_id = states.id ORDER BY cities.state_id ASC;"
+            cities.state_id = states.id ORDER BY cities.id ASC;"
     cur.execute(query_line)
     query_rows = cur.fetchall()
-    for index, row in enumerate(query_rows):
-        (city, state) = row
-        print((index, city, state))
+    for row in query_rows:
+        (id, city, state) = row
+        print((id, city, state))
     cur.close()
     conn.close()
