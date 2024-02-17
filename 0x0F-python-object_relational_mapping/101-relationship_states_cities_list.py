@@ -1,13 +1,15 @@
 #!/usr/bin/python3
-""" Fetch all modle """
+""" Fetch all modle that make get what you want from state and city """
 
-import sys
-from relationship_state import Base, State
-from relationship_city import City
-from sqlalchemy import (create_engine)
-from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
+    import sys
+    from relationship_state import Base, State
+    from relationship_city import City
+    from sqlalchemy import (create_engine)
+    from sqlalchemy.orm import sessionmaker
+
+
     format_string = 'mysql+mysqldb://{}:{}@localhost/{}'
     engine = create_engine(format_string.format(sys.argv[1],
                            sys.argv[2],
@@ -16,11 +18,8 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    result = session.query(State).\
-        join(State.cities).\
-        order_by(State.id, City.id).\
-        all()
+    result = session.query(State).all()
     for state in result:
         print("{}: {}".format(state.id, state.name))
         for city in state.cities:
-            print("\t{}: {}".format(city.id, city.name))
+            print("    {}: {}".format(city.id, city.name))
