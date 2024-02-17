@@ -9,7 +9,6 @@ if __name__ == "__main__":
     from sqlalchemy import (create_engine)
     from sqlalchemy.orm import sessionmaker
 
-
     format_string = 'mysql+mysqldb://{}:{}@localhost/{}'
     engine = create_engine(format_string.format(sys.argv[1],
                            sys.argv[2],
@@ -18,7 +17,10 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    result = session.query(State).all()
+    result = session.query(State).\
+        join(City).\
+        order_by(State.id, City.id).\
+        all()
     for state in result:
         print("{}: {}".format(state.id, state.name))
         for city in state.cities:
