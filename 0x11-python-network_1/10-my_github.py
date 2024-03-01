@@ -16,7 +16,7 @@ if __name__ == "__main__":
                 "Authorization": "Bearer {}".format(token),
                 "X-GitHub-Api-Version": "2022-11-28"
                 }
-        url = 'https://api.github.com/repos/OWNER/REPO/commits'
+        url = 'https://api.github.com/user'
         login = requests.get(url, headers=headers)
         body = login.json()
-        print(body)
+        print(body.get("id"))
