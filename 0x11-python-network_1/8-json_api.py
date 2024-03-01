@@ -9,7 +9,6 @@ if __name__ == "__main__":
     from requests.exceptions import RequestException
     import sys
 
-
     if len(sys.argv) >= 2:
         letter = sys.argv[1]
     else:
