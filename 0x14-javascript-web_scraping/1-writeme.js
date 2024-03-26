@@ -9,7 +9,6 @@ if (fName) {
   fs.writeFile(fName, content, 'utf-8', (err) => {
     if (err) {
       console.error(err);
-      return;
     }
   });
 }
