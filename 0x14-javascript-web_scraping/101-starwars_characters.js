@@ -5,26 +5,10 @@ const args = process.argv;
 
 const id = args[2];
 const url = `https://swapi-api.alx-tools.com/api/films/${id}`;
-
-// Function to fetch character name from URL
-const getCharacterName = (characterUrl) => {
-  return new Promise((resolve, reject) => {
-    request(characterUrl, (err, resp, bod) => {
-      if (err) {
-        reject(err);
-      } else {
-        const name = JSON.parse(bod).name;
-        resolve(name);
-      }
-    });
-  });
-};
-
-// Main function to fetch movie characters and print their names
-const printMovieCharacters = async () => {
+async function printCharacters (url) {
   try {
-    const movieResponse = await new Promise((resolve, reject) => {
-      request(url, (error, response, body) => {
+    const movieReq = await new Promise(function (resolve, reject) {
+      return request(url, (error, response, body) => {
         if (error) {
           reject(error);
         } else {
@@ -32,16 +16,22 @@ const printMovieCharacters = async () => {
         }
       });
     });
-
-    const characters = JSON.parse(movieResponse).characters;
+    const characters = JSON.parse(movieReq).characters;
     for (const character of characters) {
-      const characterName = await getCharacterName(character);
-      console.log(characterName);
+      const characterReq = await new Promise(function (resolve, reject) {
+        return request(character, (error, response, body) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(body);
+          }
+        });
+      });
+      const name = JSON.parse(characterReq).name;
+      console.log(name);
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.log(error);
   }
-};
-
-// Call the main function
-printMovieCharacters();
+}
+printCharacters(url);
